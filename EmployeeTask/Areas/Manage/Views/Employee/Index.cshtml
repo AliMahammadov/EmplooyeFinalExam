@@ -1,0 +1,47 @@
+﻿@using EmployeeTask.Models;
+@using EmployeeTask.View_Models;
+@using EmployeeTask.View_Models;
+
+@{
+    ViewData["Title"] = "Index";
+}
+@model ICollection<Employee>
+<table class="table table-dark">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">ImgUrl</th>
+            <th scope="col">Name</th>
+            <th scope="col">Surname</th>
+            <th scope="col">Position</th>
+            <th scope="col">About</th>
+            <th scope="col">Tvitter</th>
+            <th scope="col">Facebook</th>
+            <th scope="col">Instagram</th>
+            <th scope="col">Linkedin</th>
+            <th scope="col">Delete</th>
+            <th scope="col">Update</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model ?? new List<Employee>())
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.ImgUrl</td>
+                <td>@item.Name</td>
+                <td>@item.Surname</td>
+                <td>@item.Position</td>
+                <td>@item.About</td>
+                <td>@item.Tvitter</td>
+                <td>@item.Facebook</td>
+                <td>@item.Instagram</td>
+                <td>@item.Linkedin</td>
+                <td><a asp-area="Manage" asp-controller="Employee" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a></td>
+                <td><a asp-area="Manage" asp-controller="Employee" asp-action="Update" class="btn btn-danger">Update</a></td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+
